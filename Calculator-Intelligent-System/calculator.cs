@@ -17,8 +17,6 @@ namespace Calculator_Intelligent_System
         string equation = "";
         bool operatorPending = false;
         bool equalPending = false;
-        bool parenthesisOpen = false;
-        bool parenthesisJustClosed = false;
 
         public calculator()
         {
@@ -91,78 +89,6 @@ namespace Calculator_Intelligent_System
             updateResultDisplay(sender as Button);
         }
 
-        private void buttonLeftParenthesis_Click(object sender, EventArgs e)
-        {
-            if (resultDisplay.Text == "Error" || resultDisplay.Text == "Math Error")
-            {
-                input = "0";
-                resultDisplay.Text = input;
-            }
-
-            if (parenthesisOpen)
-            {
-                return;
-            }
-
-            if (equation == "" && (input == "" || input == "0"))
-            {
-                equation += "(";
-            }
-            else
-            {
-                if(operatorPending)
-                {
-                    equation += "(";
-                }
-                else
-                {
-                    equation += input + "x(";
-                }
-            }
-
-            parenthesisOpen = true;
-            operatorPending = true;
-            equationDisplay.Text = equation;
-        }
-
-        private void buttonRightParenthesis_Click(object sender, EventArgs e)
-        {
-            if (resultDisplay.Text == "Error" || resultDisplay.Text == "Math Error")
-            {
-                input = "0";
-                resultDisplay.Text = input;
-            }
-
-            if (parenthesisOpen)
-            {
-                if (operatorPending)
-                {
-                    MessageBox.Show("hfweifwe");
-                    equation += input + ")";
-                }
-                else
-                { 
-                    equation += input + ")";
-                    string calculateResult = CalculatorLogic.Calculate(equation);
-
-                    if (calculateResult == "Math Error" || calculateResult == "Error")
-                    {
-                        resetDisplay();
-                        resultDisplay.Text = calculateResult;
-                    }
-                    else
-                    {
-                        input = calculateResult;
-                        parenthesisJustClosed = true;
-                    }
-                }
-
-                parenthesisOpen = false;
-                equationDisplay.Text = equation;
-                resultDisplay.Text = input;
-            }
-        }
-
         private void buttonNeg_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(input) || input == "0")
@@ -177,7 +103,14 @@ namespace Calculator_Intelligent_System
                 input = "-" + input;
             }
 
-            resultDisplay.Text = input;
+            if (isOperator(input[input.Length - 1]))
+            {
+                resultDisplay.Text = input.Remove(input.Length - 1);
+            }
+            else
+            {
+                resultDisplay.Text = input;
+            }
         }
 
 
@@ -214,14 +147,6 @@ namespace Calculator_Intelligent_System
                 resultDisplay.Text = input;
             }
 
-            if (parenthesisJustClosed)
-            {
-                equation += "*";
-                equationDisplay.Text = equation;
-                input = "";
-                parenthesisJustClosed = false;
-            }
-
             if(operatorPending)
             {
                 input = "";
@@ -247,11 +172,6 @@ namespace Calculator_Intelligent_System
                 input = "0";
                 resultDisplay.Text = input;
             }
-
-            if (parenthesisOpen)
-            {
-                equation += input + buttonInput.Text;
-            }
             else if (operatorPending)
             {
                 string op = buttonInput.Text;
@@ -261,11 +181,6 @@ namespace Calculator_Intelligent_System
             {
                 operatorPending = true;
                 equation = resultDisplay.Text + buttonInput.Text;
-            }
-            else if (parenthesisJustClosed)
-            {
-                parenthesisJustClosed = false;
-                equation += buttonInput.Text;
             }
             else
             {
@@ -289,10 +204,10 @@ namespace Calculator_Intelligent_System
                         equation += input;
                         input = calculateResult;
                     }
+                    resultDisplay.Text = input;
                 }
                 operatorPending = true;
             }
-            resultDisplay.Text = input;
             equationDisplay.Text = equation;
         }
 
@@ -317,11 +232,6 @@ namespace Calculator_Intelligent_System
 
         private void buttonEqual_Click(object sender, EventArgs e)
         {
-             if (parenthesisJustClosed)
-            {
-                return;
-            }
-
             string calculateResult = CalculatorLogic.Calculate(equation + input);
 
             if (calculateResult == "Math Error" || calculateResult == "Error")
@@ -344,10 +254,7 @@ namespace Calculator_Intelligent_System
             equation = "";
             resultDisplay.Text = input;
             equationDisplay.Text = equation;
-            parenthesisOpen = false;
-            parenthesisJustClosed = false;
         }
-
         private bool isOperator(char input)
         {
             return input == '+' || input == '-' || input == 'x' || input == '÷' || input == '^';
@@ -359,7 +266,6 @@ namespace Calculator_Intelligent_System
         public static string Calculate(string equation)
         {
             string expression = equation.Replace("x", "*").Replace("÷", "/");
-            MessageBox.Show(equation);
 
             try
             {

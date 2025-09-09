@@ -42,12 +42,10 @@
             buttonSix = new Button();
             buttonThree = new Button();
             buttonDot = new Button();
-            buttonRightParenthesis = new Button();
             buttonNeg = new Button();
             buttonEight = new Button();
             buttonFive = new Button();
             buttonTwo = new Button();
-            buttonLeftParenthesis = new Button();
             buttonSeven = new Button();
             buttonFour = new Button();
             buttonOne = new Button();
@@ -77,9 +75,9 @@
             buttonAc.FlatStyle = FlatStyle.Flat;
             buttonAc.Font = new Font("Inter", 16.2F);
             buttonAc.ForeColor = Color.Black;
-            buttonAc.Location = new Point(449, 191);
+            buttonAc.Location = new Point(308, 191);
             buttonAc.Name = "buttonAc";
-            buttonAc.Size = new Size(130, 58);
+            buttonAc.Size = new Size(271, 58);
             buttonAc.TabIndex = 4;
             buttonAc.Text = "AC";
             buttonAc.UseVisualStyleBackColor = false;
@@ -188,9 +186,9 @@
             buttonDel.FlatStyle = FlatStyle.Flat;
             buttonDel.Font = new Font("Inter", 16.2F);
             buttonDel.ForeColor = Color.Black;
-            buttonDel.Location = new Point(308, 191);
+            buttonDel.Location = new Point(29, 191);
             buttonDel.Name = "buttonDel";
-            buttonDel.Size = new Size(130, 58);
+            buttonDel.Size = new Size(270, 58);
             buttonDel.TabIndex = 4;
             buttonDel.Text = "DEL";
             buttonDel.UseVisualStyleBackColor = false;
@@ -204,9 +202,9 @@
             buttonPow.FlatStyle = FlatStyle.Flat;
             buttonPow.Font = new Font("Inter", 16.2F);
             buttonPow.ForeColor = Color.Black;
-            buttonPow.Location = new Point(169, 191);
+            buttonPow.Location = new Point(239, 255);
             buttonPow.Name = "buttonPow";
-            buttonPow.Size = new Size(130, 58);
+            buttonPow.Size = new Size(199, 58);
             buttonPow.TabIndex = 5;
             buttonPow.Text = "^";
             buttonPow.UseVisualStyleBackColor = false;
@@ -276,22 +274,6 @@
             buttonDot.UseVisualStyleBackColor = false;
             buttonDot.Click += buttonDot_Click;
             // 
-            // buttonRightParenthesis
-            // 
-            buttonRightParenthesis.BackColor = SystemColors.ButtonShadow;
-            buttonRightParenthesis.FlatAppearance.BorderColor = Color.White;
-            buttonRightParenthesis.FlatAppearance.BorderSize = 0;
-            buttonRightParenthesis.FlatStyle = FlatStyle.Flat;
-            buttonRightParenthesis.Font = new Font("Inter", 16.2F);
-            buttonRightParenthesis.ForeColor = Color.Black;
-            buttonRightParenthesis.Location = new Point(238, 255);
-            buttonRightParenthesis.Name = "buttonRightParenthesis";
-            buttonRightParenthesis.Size = new Size(200, 58);
-            buttonRightParenthesis.TabIndex = 4;
-            buttonRightParenthesis.Text = ")";
-            buttonRightParenthesis.UseVisualStyleBackColor = false;
-            buttonRightParenthesis.Click += buttonRightParenthesis_Click;
-            // 
             // buttonNeg
             // 
             buttonNeg.BackColor = SystemColors.ButtonShadow;
@@ -300,9 +282,9 @@
             buttonNeg.FlatStyle = FlatStyle.Flat;
             buttonNeg.Font = new Font("Inter", 16.2F);
             buttonNeg.ForeColor = Color.Black;
-            buttonNeg.Location = new Point(29, 191);
+            buttonNeg.Location = new Point(29, 255);
             buttonNeg.Name = "buttonNeg";
-            buttonNeg.Size = new Size(130, 58);
+            buttonNeg.Size = new Size(204, 58);
             buttonNeg.TabIndex = 5;
             buttonNeg.Text = "+/-";
             buttonNeg.UseVisualStyleBackColor = false;
@@ -355,22 +337,6 @@
             buttonTwo.Text = "2";
             buttonTwo.UseVisualStyleBackColor = false;
             buttonTwo.Click += buttonTwo_Click;
-            // 
-            // buttonLeftParenthesis
-            // 
-            buttonLeftParenthesis.BackColor = SystemColors.ButtonShadow;
-            buttonLeftParenthesis.FlatAppearance.BorderColor = Color.White;
-            buttonLeftParenthesis.FlatAppearance.BorderSize = 0;
-            buttonLeftParenthesis.FlatStyle = FlatStyle.Flat;
-            buttonLeftParenthesis.Font = new Font("Inter", 16.2F);
-            buttonLeftParenthesis.ForeColor = Color.Black;
-            buttonLeftParenthesis.Location = new Point(29, 255);
-            buttonLeftParenthesis.Name = "buttonLeftParenthesis";
-            buttonLeftParenthesis.Size = new Size(202, 58);
-            buttonLeftParenthesis.TabIndex = 4;
-            buttonLeftParenthesis.Text = "(";
-            buttonLeftParenthesis.UseVisualStyleBackColor = false;
-            buttonLeftParenthesis.Click += buttonLeftParenthesis_Click;
             // 
             // buttonSeven
             // 
@@ -461,8 +427,6 @@
             Controls.Add(buttonNeg);
             Controls.Add(buttonPow);
             Controls.Add(buttonDiv);
-            Controls.Add(buttonLeftParenthesis);
-            Controls.Add(buttonRightParenthesis);
             Controls.Add(buttonDel);
             Controls.Add(buttonAc);
             Controls.Add(resultDisplay);
@@ -493,12 +457,10 @@
         private Button buttonSix;
         private Button buttonThree;
         private Button buttonDot;
-        private Button buttonRightParenthesis;
         private Button buttonSqrt;
         private Button buttonEight;
         private Button buttonFive;
         private Button buttonTwo;
-        private Button buttonLeftParenthesis;
         private Button buttonSeven;
         private Button buttonFour;
         private Button buttonOne;
